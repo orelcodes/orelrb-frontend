@@ -1,0 +1,8 @@
+FROM node:9.4.0-alpine
+RUN apk add --no-cache --update yarn
+ENV APP_PATH /usr/src/app
+WORKDIR $APP_PATH
+ENV PATH $APP_PATH/node_modules/.bin:$PATH
+COPY package.json ./
+RUN yarn
+CMD yarn start
