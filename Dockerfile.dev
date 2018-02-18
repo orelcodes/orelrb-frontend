@@ -1,9 +1,16 @@
 FROM node:9.4.0-alpine
-RUN apk add --no-cache --update yarn \
-                                bash
+
+RUN apk add --no-cache --update yarn
+
 ENV APP_PATH /usr/src/app
-WORKDIR $APP_PATH
 ENV PATH $APP_PATH/node_modules/.bin:$PATH
-COPY package.json ./
-RUN yarn
-CMD yarn start
+
+WORKDIR $APP_PATH
+
+COPY . .
+
+RUN yarn install
+
+CMD [ "ln", "-s", "node_modules/react-scripts/bin/react-scripts.js", "node_modules/.bin/react-scripts", ";", \
+      "yarn", "start" \
+]
