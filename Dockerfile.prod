@@ -6,4 +6,5 @@ WORKDIR $APP_PATH
 ENV PATH $APP_PATH/node_modules/.bin:$PATH
 COPY package.json ./
 RUN yarn
+RUN yarn build
 CMD yarn start
