@@ -14,3 +14,5 @@ RUN yarn install
 CMD [ "ln", "-s", "node_modules/react-scripts/bin/react-scripts.js", "node_modules/.bin/react-scripts", ";", \
       "yarn", "start" \
 ]
+
+EXPOSE 3000
